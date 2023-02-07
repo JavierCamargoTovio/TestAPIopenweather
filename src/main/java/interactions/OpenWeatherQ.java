@@ -1,17 +1,19 @@
 package interactions;
 
-import net.serenitybdd.rest.SerenityRest;
+import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Question;
 
-import static org.hamcrest.MatcherAssert.assertThat;
+import static net.serenitybdd.rest.SerenityRest.lastResponse;
 
-public class OpenWeatherQ {
+public class OpenWeatherQ implements Question<String> {
 
+    public static OpenWeatherQ expected() {
+        return new OpenWeatherQ();
+    }
 
-    public static Question<String> theExpectedUser() {
-        return actor -> SerenityRest.lastResponse()
-                .jsonPath()
-                .getString("id");
+    public String answeredBy(Actor actor){
+        String idRepuesta = lastResponse().jsonPath().get("id").toString();
+        return idRepuesta;
     }
 
 }

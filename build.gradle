@@ -8,6 +8,7 @@ buildscript {
         classpath "net.serenity-bdd:serenity-gradle-plugin:3.3.2"
         classpath "net.serenity-bdd:serenity-single-page-report:3.3.2"
     }
+
 }
 
 plugins {
@@ -32,6 +33,7 @@ version '1.0-SNAPSHOT'
 description 'Automatización de las funcionalidades de SNetwork.'
 compileJava.options.encoding = "UTF-8"
 compileTestJava.options.encoding = "UTF-8"
+
 
 sourceCompatibility = JavaVersion.VERSION_1_8
 targetCompatibility = JavaVersion.VERSION_1_8
@@ -62,6 +64,8 @@ dependencies {
     implementation "io.github.bonigarcia:webdrivermanager:${boniGarciaVersion}"
     testImplementation "org.slf4j:slf4j-simple:${slf4jVersion}"
     compileOnly fileTree(dir: 'libs', include: '*.jar')
+    implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jdk8', version: '2.13.4'
+
 }
 
 wrapper {
